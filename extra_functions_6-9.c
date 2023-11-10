@@ -47,11 +47,11 @@ int isalphab(int c)
  * convenumber - converter function, a clone of itoa
  * @num: number to be converted
  * @base: base of to be converted to
- * @arg: argument arg
+ * @fla: argument fla
  *
  * Return: string
  */
-char *convenumber(long int num, int base, int arg)
+char *convenumber(long int num, int base, int fla)
 {
 	static char *array;
 	static char buffer[50];
@@ -59,13 +59,13 @@ char *convenumber(long int num, int base, int arg)
 	char *ptr;
 	unsigned long n = num;
 
-	if (!(arg & CONVERT_UNSIGNED) && num < 0)
+	if (!(fla & CONVERT_UNSIGNED) && num < 0)
 	{
 		n = -num;
 		sign = '-';
 
 	}
-	array = arg & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = fla & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
